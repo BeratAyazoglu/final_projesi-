@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card shadow-sm">
+    <div class="card-body">
+        <h2 class="mb-4 display-4">Hoşgeldiniz!</h1>
+        <p class="lead mb-4">Ayazoglu Yazılım Stok Yönetim sistemine giriş yapın veya kayıt olun.</p>
+      <form method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label">E-posta</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Şifre</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-3">Giriş Yap</button>
+      </form>
+      
+     
+      <a href="{{ url_for('register') }}" class="btn btn-secondary w-100 mt-3">Kayıt Sayfasına Git</a>
+    </div>
+  </div>
+  <footer class="bg-dark text-white text-center py-3 mt-4 fixed-bottom">
+    &copy; Ayazoglu Yazılım - 2025 Stok Yönetimi Uygulaması | Tüm Hakları Saklıdır.
+ </footer>
+{% endblock %}

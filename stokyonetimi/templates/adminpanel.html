@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: #fff;
+            padding: 10px 15px;
+            display: block;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            vertical-align: middle;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="sidebar">
+    <h3 class="text-white text-center">Admin Paneli</h3>
+    <a href="{{ url_for('dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard Dön</a>
+    <a href="{{ url_for('admin_panel') }}"><i class="fas fa-users"></i> Kullanıcılar</a>
+
+    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        <h2>Kullanıcılar</h2>
+        
+        <form method="GET" action="{{ url_for('admin_panel') }}" class="search-bar">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" value="{{ request.args.get('search', '') }}" placeholder="İsim veya E-posta ile ara">
+                <button class="btn btn-primary" type="submit">Ara</button>
+            </div>
+        </form>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>İsim</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ 'Evet' if user.is_admin else 'Hayır' }}</td>
+                        <td>
+                            <a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Düzenle</a>
+                            <a href="{{ url_for('delete_user', user_id=user.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Bu kullanıcıyı silmek istediğinize emin misiniz?')"><i class="fas fa-trash-alt"></i> Sil</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="bg-dark text-white text-center py-3 mt-4 fixed-bottom">
+    &copy; Ayazoglu Yazılım - 2025 Stok Yönetimi Uygulaması | Tüm Hakları Saklıdır.
+</footer>
+</html>
