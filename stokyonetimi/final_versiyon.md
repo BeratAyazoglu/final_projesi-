@@ -143,4 +143,4 @@ Arayü Özelleştirme (kullanıcıların en çok kullandığı formları kendile
 Yedekleme (Save dosyası oluşturularak her 1 saatte  bir veya 30 dk bir manuel de eklenebilir kullancı giridiiğin herhangi bir sorun a(Öreneğin: Elektirik veya donaım sorunu) karşı yedekleme böylece kullanıcı kaldığı yerden devam edebilir ve mağdur olmazmış olur.)
 
 ## 9. İletişim Bilgisi
-GitHub: [github.com/kullaniciadi/stok-yonetimi-sistemi](https://github.com/BeratAyazoglu/final_projesi-/tree/main/stokyonetimi)
+GitHub: https://github.com/BeratAyazoglu/final_projesi-
